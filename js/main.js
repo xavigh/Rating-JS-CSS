@@ -1,15 +1,12 @@
 //Rating exercise
 //@Xavi Gargallo
-// add at the end of the HTML to define global variables depending of DOM elements
-// because the file html needs to load first.
 
-  //get the element + i then use to add css through classList.add()
-    starElements.addEventListener("click", clickOnStar, true );
 
 // check stars
 //we loop through DOM elem and change their css Class
 // to display differently
 function mark(n){
+  window.addEventListener("click",reset);
   reset();
       for(var i=1; i<=n; i++) {
         let elemId = document.querySelector("#star"+i);
@@ -21,7 +18,7 @@ function reset(){
   for(var i=1; i<=5; i++) {
       let elemId = document.querySelector("#star"+i);
       elemId.classList.toggle("marked", false);
-        console.log("elemId= "+ elemId);
+        // console.log("elemId= "+ elemId);
   }
 }
 
@@ -35,9 +32,7 @@ function stopReset(e){
 }
 
 function clickOnStar(e){
-  window.removeEventListener("click",reset);
-  starElements.removeEventListener("click",stopReset);
+  // window.removeEventListener("click",reset);
+  // starElements.removeEventListener("click",stopReset);
 
-  var a = e.currentTarget.innerHTML;
-  console.log("currentTarget = "+a );
 }
