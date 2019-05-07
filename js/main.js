@@ -24,17 +24,18 @@ function reset(){
   for(var i=1; i<=5; i++) {
       let elemId = document.querySelector("#star"+i);
       elemId.classList.toggle("marked", false);
-        console.log("starId= "+elemId.innerHtml);
+        console.log("elemId= "+ elemId);
   }
 }
+window.addEventListener("click",resetScreen);
+starElements.addEventListener("click",stopReset);
 
 // event listener to catch click anyhere in the screen but
 // in the DOM element Id's that target our stars.
+function resetScreen(){
+  reset();
 
-function resetScreen(e){
-
-   document.addEventListener("onclick", function(e){
-     
-   })
-
+}
+function stopReset(e){
+    e.stopPropagation();
 }
