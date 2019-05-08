@@ -1,27 +1,48 @@
-//Rating exercise
-//@Xavi Gargallo
+//Rating star exercise, Xavi Gargallo Jané
 
-  var star1 = document.querySelector("#star1");
-  var star2 = document.querySelector("#star2");
-  var star3 = document.querySelector("#star3");
-  var star4 = document.querySelector("#star4");
-  var star5 = document.querySelector("#star5");
 
-// keep variable DOM elements inside an array
- var starsArray = [star1, star2, star3, star4, star5];
+//we loop through DOM elem and change the css Class to display differently
+// events listeners to catch click anyhere in the screen but
+// in the DOM element Id's that target our stars.
+window.addEventListener("click",reset);
+window.addEventListener("click",resetStarsClicked);
+starElements.addEventListener("click",stopReset);
 
-// check stars
+//Add marked class
 function mark(n){
-reset();
-      for(var i=0; i<=n; i++) {
-        starsArray[i].classList.toggle("marked",true);
-        // console.log(starsArray[i]);
+      reset();
+      for(var i=1; i<=n; i++) {
+        let elemId = document.querySelector("#star"+i);
+        elemId.classList.toggle("marked",true);
       }
 }
-
+//Reset the stars
 function reset(){
-  for(var i=0; i<=4; i++) {
-    starsArray[i].classList.toggle("marked", false);
-    console.log(starsArray[i]);
-  }
+      for(var i=1; i<=5; i++) {
+          let elemId = document.querySelector("#star"+i);
+          elemId.classList.toggle("marked", false);
+         // console.log("elemId= "+ elemId);
+      }
+}
+//reset the stars when clicked on them.
+function resetStarsClicked() {
+
+      for(var i=1; i<=5; i++) {
+          let elemId = document.querySelector("#star"+i);
+          elemId.classList.toggle("starClick", false);
+            // console.log("elemId= "+ elemId);
+      }
+}
+// if user clicks on star then stop reset.
+function stopReset(e){
+    e.stopPropagation();//this stops reset()
+}
+// if user click on star then add css class starClick.
+function clickOnStar(n){
+      resetStarsClicked();
+
+      for(var i=1; i<=n; i++) {
+        let elemId = document.querySelector("#star"+i);
+        elemId.classList.toggle("starClick",true);
+      }
 }
