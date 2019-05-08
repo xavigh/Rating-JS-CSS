@@ -6,7 +6,7 @@
 //we loop through DOM elem and change their css Class
 // to display differently
 function mark(n){
-  window.addEventListener("click",reset);
+
   reset();
       for(var i=1; i<=n; i++) {
         let elemId = document.querySelector("#star"+i);
@@ -27,12 +27,17 @@ function reset(){
 window.addEventListener("click",reset);
 starElements.addEventListener("click",stopReset);
 
+
 function stopReset(e){
-    e.stopPropagation();
+    e.stopPropagation();//this stops reset()
 }
 
-function clickOnStar(e){
+function clickOnStar(n){
   // window.removeEventListener("click",reset);
   // starElements.removeEventListener("click",stopReset);
+  for(var i=1; i<=n; i++) {
+    let elemId = document.querySelector("#star"+i);
+    elemId.classList.toggle("starClick",true);
+  }
 
 }
